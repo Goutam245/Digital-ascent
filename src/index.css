@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base Colors - Premium Palette */
+    --background: 0 0% 100%;
+    --foreground: 216 28% 13%;
+    
+    /* Deep Space Blue */
+    --deep-space: 219 85% 7%;
+    
+    /* Electric Cyan */
+    --electric-cyan: 189 100% 50%;
+    
+    /* Royal Purple */
+    --royal-purple: 243 77% 69%;
+    
+    /* Pure White */
+    --pure-white: 0 0% 100%;
+    
+    /* Soft Pearl */
+    --soft-pearl: 210 25% 98%;
+    
+    /* Success Green */
+    --success: 146 100% 45%;
+    
+    /* Warm Coral */
+    --coral: 343 100% 70%;
+    
+    /* Gold Accent */
+    --gold: 43 100% 50%;
+    
+    /* Neutral Gray */
+    --neutral: 215 16% 91%;
+    
+    /* Deep Charcoal */
+    --charcoal: 216 28% 13%;
+
+    /* Semantic Tokens */
+    --primary: 189 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 243 77% 69%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 25% 98%;
+    --muted-foreground: 215 16% 46%;
+
+    --accent: 343 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 16% 91%;
+    --input: 215 16% 91%;
+    --ring: 189 100% 50%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 216 28% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 28% 13%;
+
+    --radius: 0.75rem;
+
+    /* Premium Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(219, 85%, 7%) 0%, hsl(223, 55%, 30%) 50%, hsl(243, 77%, 69%) 100%);
+    --gradient-card: linear-gradient(120deg, hsla(189, 100%, 50%, 0.12) 0%, hsla(243, 77%, 69%, 0.12) 100%);
+    --gradient-button: linear-gradient(90deg, hsl(189, 100%, 50%) 0%, hsl(210, 100%, 50%) 100%);
+    --gradient-text: linear-gradient(90deg, hsl(343, 100%, 70%), hsl(43, 100%, 50%), hsl(189, 100%, 50%));
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsla(189, 100%, 50%, 0.3);
+    --shadow-glow: 0 0 40px hsla(189, 100%, 70%, 0.4);
+    --shadow-card: 0 4px 6px -1px hsla(216, 28%, 13%, 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 219 85% 7%;
+    --foreground: 0 0% 100%;
+
+    --card: 219 85% 10%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 219 85% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 189 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 243 77% 69%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 219 70% 15%;
+    --muted-foreground: 215 16% 70%;
+
+    --accent: 343 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 219 70% 15%;
+    --input: 219 70% 15%;
+    --ring: 189 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  p {
+    letter-spacing: 0em;
+    line-height: 1.6;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift {
+    @apply transition-smooth;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
